@@ -4,14 +4,15 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>상품 정보 등록</title>
+		<title>상품 정보 수정</title>
 	</head>
 	<body>
-			<h3>상품 정보 등록</h3>
+			<h3>상품 정보 수정</h3>
 		
-		<form method="post" action="/mybatis/product/insertProduct">
+		<form method="post" action="/mybatis/product/updateProduct">
+			<input type="hidden" name="prdNo" value="${prdNo}" >
 			<table>
-				<tr><td>상품번호</td><td> <input type="text" name="prdNo"></td></tr>
+				<tr><td colspan="2"> 수정할 상품번호: ${prdNo}</tr>
 				<tr><td>상품명 </td><td><input type="text" name="prdName"></td></tr>
 				<tr><td>가 격 </td><td><input type="text" name="prdPrice"></td></tr>
 				<tr><td>제조회사 </td><td><input type="text" name="prdCompany"></td></tr>

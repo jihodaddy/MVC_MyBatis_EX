@@ -1,12 +1,15 @@
 package com.spring_mvc.mybatis.model;
 
 public class ProductVO {
-	private String prdNo; 
-    private String prdName;
-    private int prdPrice; 
-    private String prdCompany;
-    private int prdStock;
-    
+
+	private String prdNo;
+	private String prdName;
+	private int prdPrice;
+	private String prdCompany;
+	private int prdStock;
+	
+	
+	//Getter, Setter
 	public String getPrdNo() {
 		return prdNo;
 	}
@@ -37,7 +40,5 @@ public class ProductVO {
 	public void setPrdStock(int prdStock) {
 		this.prdStock = prdStock;
 	}
-    
-    
-    
+	
 }
