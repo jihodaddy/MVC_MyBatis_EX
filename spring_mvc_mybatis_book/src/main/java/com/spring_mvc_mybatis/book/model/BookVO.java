@@ -1,12 +1,13 @@
 package com.spring_mvc_mybatis.book.model;
 
+
 public class BookVO {
 	private String bookNo;
 	private String bookName;
 	private String bookAuthor;
 	private int bookPrice;
-	private String bookPublisher;
-	
+	private String bookDate;
+	private int qtyNo;
 	
 	public String getBookNo() {
 		return bookNo;
@@ -20,26 +21,29 @@ public class BookVO {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public String getBookAuthor() {
-		return bookAuthor;
-	}
-	public void setBookAuthor(String bookAuthor) {
-		this.bookAuthor = bookAuthor;
-	}
 	public int getBookPrice() {
 		return bookPrice;
 	}
 	public void setBookPrice(int bookPrice) {
 		this.bookPrice = bookPrice;
 	}
-	public String getBookPublisher() {
-		return bookPublisher;
+	public String getBookDate() {
+		return bookDate;
 	}
-	public void setBookPublisher(String bookPublisher) {
-		this.bookPublisher = bookPublisher;
+	public void setBookDate(String bookDate) {
+		this.bookDate = bookDate;
 	}
-	
-
-
+	public int getQtyNo() {
+		return qtyNo;
+	}
+	public void setQtyNo(int qtyNo) {
+		this.qtyNo = qtyNo;
+	}
+	public String getBookAuthor() {
+		return bookAuthor;
+	}
+	public void setBookAuthor(String bookAuthor) {
+		this.bookAuthor = bookAuthor;
+	}
 	
 }
