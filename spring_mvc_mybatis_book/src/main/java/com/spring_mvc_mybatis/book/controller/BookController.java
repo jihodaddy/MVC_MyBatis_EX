@@ -109,8 +109,6 @@ public class BookController {
 		model.addAttribute("bookList", bookList);
 		return bookList;
 	}
-
-	
 	
 	
 }
