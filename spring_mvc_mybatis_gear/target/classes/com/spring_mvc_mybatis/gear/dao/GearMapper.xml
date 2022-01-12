@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring_mvc_mybatis.gear.dao.IGearDAO">
+  	<resultMap id="gearList" type="com.spring_mvc_mybatis.gear.model.GearVO">
+  		<result property="gearNo" column="gearNo"/>
+  		<result property="gearName" column="gearName"/>
+  		<result property="gearMaker" column="gearMaker"/>
+  		<result property="gearCtg" column="gearCtg"/>
+  		<result property="gearPrice" column="gearPrice"/>
+  		<result property="gearQty" column="gearQty"/>
+  	</resultMap>
+  		
+  		<!-- 전체 장비조회  -->
+  		<select id="listAllGear" resultMap="gearList">
+  			SELECT * FROM gear ORDER BY gearNo
+  		</select>
+  		<!-- 장비 등록  -->
+  		<insert id="insertGear" parameterType="com.spring_mvc_mybatis.gear.model.GearVO">
+  			INSERT INTO gear(gearNo, gearName, gearMaker, gearCtg, gearPrice, gearQty)
+  			VALUES(#{gearNo}, #{gearName}, #{gearMaker}, #{gearCtg},#{gearPrice}, #{gearQty})
+  		</insert>
+  		<!-- 장비 상세 정보  -->
+  		<select id="detailViewGear" parameterType="String"
+  												 resultType="com.spring_mvc_mybatis.gear.model.GearVO">
+			SELECT * FROM gear WHERE gearNo = #{gearNo}													 
+  		</select>
+  		<!-- 장비 정보 수정 -->
+  		<update id="updateGear" parameterType="com.spring_mvc_mybatis.gear.model.GearVO">
+			 UPDATE gear SET gearName = #{gearName}, gearMaker = #{gearMaker}, gearCtg = #{gearCtg},
+			 							gearPrice = #{gearPrice}, gearQty = #{gearQty} 
+			 WHERE gearNo = #{gearNo}		
+  		</update>
+  		
+  		<!-- 장비 삭제  -->
+  		<delete id="deleteGear" parameterType="String">
+  			DELETE FROM gear WHERE gearNo= #{gearNo}
+  		</delete>
+  		
+  		<!-- 장비 중복 확인  -->
+  		<select id="gearNoCheck" resultType="String" parameterType="String">
+  			SELECT gearNo FROM gear WHERE gearNo=#{gearNo}
+  		</select>	
+  		
+  		<!-- 장비 검색  -->
+  		<!-- 도서 검색 -->
+		<select id="gearSearch" resultMap="gearList" parameterType="hashmap">
+			SELECT * FROM gear WHERE
+			<choose>
+				<when test="type != null and type.equals('gearName')">
+					<!-- 장비명으로 검색 -->
+					gearName LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+					
+				<when test="type != null and type.equals('gearCtg')">
+					<!-- 저자로 검색 -->
+					gearCtg LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+			</choose>
+		
+		</select>
+  </mapper>
